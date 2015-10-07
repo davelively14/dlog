@@ -22,4 +22,4 @@ cancel_user_registration GET    /users/cancel(.:format)        devise/registrati
                          PATCH  /users(.:format)               devise/registrations#update
                          PUT    /users(.:format)               devise/registrations#update
                          DELETE /users(.:format)               devise/registrations#destroy
-                    root GET    /                              welcome#index
+                    root GET    /                              entries#index
