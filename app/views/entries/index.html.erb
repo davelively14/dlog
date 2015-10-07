@@ -8,8 +8,8 @@
 
 
     <% if current_user && entry.user_id == current_user.id %>
-      <%= link_to 'Edit', edit_entry_path(entry) %>
-      <%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to 'Edit', edit_entry_path(entry), class: 'label warning round' %>
+      <%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' }, class: 'label alert round' %>
     <% end %>
 
     <br>
@@ -18,5 +18,5 @@
 
   <br>
 
-  <%= link_to 'New Entry', new_entry_path %>
+  <%= link_to 'New Entry', new_entry_path, class: 'label round success right' %>
 </div>
