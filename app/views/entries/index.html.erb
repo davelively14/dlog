@@ -1,25 +1,25 @@
 <div class="row">
   <p id="notice"><%= notice %></p>
+  <div class="small-3 columns">
+    <% if current_user %>
+      <%= link_to 'New Entry', new_entry_path, class: 'button round success ' %>
+    <% end %>
+  </div>
+  <div class="small-9 columns">
+    <% @entries.each do |entry| %>
+      <h3 class="subheader"><%= entry.title %></h3>
+      <p><%= entry.body.html_safe %></p>
+      <p class="right subheader">by <%= entry.user.email %> on <%= entry.created_at.to_formatted_s(:long_ordinal) %></p>
 
-  <% @entries.each do |entry| %>
-    <h3 class="subheader"><%= entry.title %></h3>
-    <p><%= entry.body.html_safe %></p>
-    <p class="right subheader">by <%= entry.user.email %> on <%= entry.created_at.to_formatted_s(:long_ordinal) %></p>
 
+      <% if current_user && entry.user_id == current_user.id %>
+        <%= link_to 'Edit', edit_entry_path(entry), class: 'label warning round' %>
+        <%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' }, class: 'label alert round' %>
+      <% end %>
 
-    <% if current_user && entry.user_id == current_user.id %>
-      <%= link_to 'Edit', edit_entry_path(entry), class: 'label warning round' %>
-      <%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' }, class: 'label alert round' %>
+      <hr>
+
     <% end %>
 
-    <br>
-
-  <% end %>
-
-  <br>
-
-  <% if current_user %>
-    <%= link_to 'New Entry', new_entry_path, class: 'label round success right' %>
-  <% end %>
-
+  </div>
 </div>
