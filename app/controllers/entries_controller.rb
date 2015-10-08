@@ -29,7 +29,7 @@ class EntriesController < ApplicationController
 
     respond_to do |format|
       if @entry.save
-        format.html { redirect_to @entry, notice: 'Entry was successfully created.' }
+        format.html { redirect_to root_url, notice: 'Entry was successfully created.' }
         format.json { render :show, status: :created, location: @entry }
       else
         format.html { render :new }
@@ -57,7 +57,7 @@ class EntriesController < ApplicationController
   def destroy
     @entry.destroy
     respond_to do |format|
-      format.html { redirect_to entries_url, notice: 'Entry was successfully destroyed.' }
+      format.html { redirect_to root_url, notice: 'Entry was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
