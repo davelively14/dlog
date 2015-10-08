@@ -11,15 +11,20 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+  <div class="row">
+    <div class="small-1 columns">
+      <%= f.label :title, class: 'inline left' %>
+    </div>
+    <div class="small-11 columns">
+      <%= f.text_field :title, autofocus: true %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :body %><br>
-    <%= f.text_area :body %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="row">
+    <div class="small-12 columns">
+      <%= f.label :body, class: 'left' %><br>
+      <%= f.text_area :body, rows: 15 %>
+      <%= f.submit 'Save', class: 'button success round right' %>
+      <%= link_to 'Cancel', root_path, data: { confirm: 'Cancel and lose all changes?'}, class: 'alert round button right' %>
+    </div>
   </div>
 <% end %>
