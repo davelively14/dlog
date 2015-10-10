@@ -1,15 +1,33 @@
 <div class="row">
   <p id="notice"><%= notice %></p>
-  <div class="small-3 columns">
+  <div class="small-4 columns">
+    <div class="panel">
+      <h5 class="text-center subheader">Posts</h5>
+      <% @entries.each do |entry| %>
+        <p>
+          <strong><%= link_to entry.title.truncate(30), '#' %></strong><br>
+          <%= entry.created_at.strftime("%m/%d/%y") %>
+        </p>
+      <% end %>
+    </div>
+
     <% if current_user %>
-      <%= link_to 'New Entry', new_entry_path, class: 'button round success ' %>
+      <%= link_to 'New Entry', new_entry_path, class: 'button round success expand' %>
     <% end %>
   </div>
-  <div class="small-9 columns">
+  <div class="small-8 columns">
     <% @entries.each do |entry| %>
       <h3 class="subheader"><%= entry.title %></h3>
       <p><%= entry.body.html_safe %></p>
-      <p class="right subheader">by <%= entry.user.email %> on <%= entry.created_at.to_formatted_s(:long_ordinal) %></p>
+      <p class="right subheader">
+        by
+        <% if entry.user.username %>
+          <%= entry.user.username %>
+        <% else %>
+          <%= entry.user.email %>
+        <% end %>
+        on <%= entry.created_at.strftime("%m/%d/%y at %I:%M%p") %>
+      </p>
 
 
       <% if current_user && entry.user_id == current_user.id %>
