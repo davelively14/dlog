@@ -1,7 +1,7 @@
-<div class="row">
-  <h2 class="text-center"><strong>Login</strong></h2>
+<h2 class="text-center"><strong>Sign In</strong></h2>
 
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="row">
     <div class="small-3 columns">
       <%= f.label :email, class: 'right inline' %>
       <%= f.label :password, class: 'right inline' %>
@@ -13,17 +13,16 @@
         <%= f.check_box :remember_me %>
         <%= f.label :remember_me %>
       <% end -%>
-      <%= f.submit "Log in", class: 'button success round right' %>
     </div>
-
-
-  <% end %>
-
-
-</div>
-
-<div class="row">
-  <div class="small-9 columns small-offset-3">
-    <%= render "devise/shared/links" %>
   </div>
-</div>
+
+  <div class="row">
+    <div class="small-7 small-offset-3 columns end">
+      <div class="row">
+        <%= f.submit "Sign in", class: 'button success round expand' %>
+      </div>
+      <%= link_to 'Create new account?', new_user_registration_path, class: 'right' %><br>
+      <%= link_to 'Forgot your password?', new_user_password_path, class: 'right' %>
+    </div>
+  </div>
+<% end %>
