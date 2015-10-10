@@ -4,7 +4,8 @@ class EntriesController < ApplicationController
   # GET /entries
   # GET /entries.json
   def index
-    @entries = Entry.order(:created_at).last(5).reverse
+    @recent = Entry.page(1)
+    @entries = Entry.page
   end
 
   # GET /entries/1
