@@ -8,6 +8,14 @@
           <%= entry.created_at.strftime("%m/%d/%y") %>
         </p>
       <% end %>
+      <hr>
+      <!--TODO: Move into a helper -->
+      <% if @current_page.to_i < @max_pages.to_i %>
+        <%= link_to 'Next Page', entries_path(page: @current_page.to_i + 1), class: 'right' %><br>
+      <% end %>
+      <% if @current_page.to_i > 1 %>
+        <%= link_to 'Previous Page', entries_path(page: @current_page.to_i - 1), class: 'left' %><br>
+      <% end %>
     </div>
 
     <% if current_user %>
@@ -40,3 +48,6 @@
 
   </div>
 </div>
+
+
+

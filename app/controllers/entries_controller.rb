@@ -4,17 +4,18 @@ class EntriesController < ApplicationController
   # GET /entries
   # GET /entries.json
   def index
-    if session[:page]
-      @page = session[:page]
-    else
-      @page = 1
-      session[:page] = @page
-    end
-
     @all_entries = Entry.all
     @max_pages = @all_entries.max_pages
     @recent = @all_entries.page
-    @entries = @all_entries.page(@page)
+
+    if page_params[:page]
+      @entries = @all_entries.page(page_params[:page].to_i)
+      @current_page = page_params[:page]
+    else
+      @entries = @all_entries.page
+      @current_page = 1
+    end
+
   end
 
   # GET /entries/1
@@ -82,5 +83,9 @@ class EntriesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def entry_params
       params.require(:entry).permit(:user_id, :title, :body, :slug)
+    end
+
+    def page_params
+      params.permit(:page)
     end
 end
