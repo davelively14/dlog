@@ -1,24 +1,34 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="small-4 columns">
+    <div class="panel">
+      <h5 class="text-center">Recent Posts</h5>
+      <% @recent.each do |entry| %>
+        <p>
+          <strong><%= link_to entry.title.truncate(30), '#' %></strong><br>
+          <%= entry.created_at.strftime("%m/%d/%y") %>
+        </p>
+      <% end %>
+    </div>
+  </div>
+  <div class="small-8 columns">
+    <h2><%= @entry.title %></h2>
+    <p><%= @entry.body.html_safe %></p>
+    <p class="right">
+      by
+      <% if @entry.user.username.length > 0 %>
+        <%= @entry.user.username %>
+      <% else %>
+        <%= @entry.user.email %>
+      <% end %>
+      on <%= @entry.created_at.strftime("%m/%d/%y at %I:%M%p") %>
+    </p>
+    <hr>
 
-<p>
-  <strong>User:</strong>
-  <%= @entry.user %>
-</p>
+    <% if @entry.user == current_user %>
+      <%= link_to 'Edit', edit_entry_path(@entry), class: 'label warning round' %>
+    <% end %>
 
-<p>
-  <strong>Title:</strong>
-  <%= @entry.title %>
-</p>
+    <%= link_to 'Back', entries_path, class: 'label info round' %>
+  </div>
+</div>
 
-<p>
-  <strong>Body:</strong>
-  <%= @entry.body %>
-</p>
-
-<p>
-  <strong>Slug:</strong>
-  <%= @entry.slug %>
-</p>
-
-<%= link_to 'Edit', edit_entry_path(@entry) %> |
-<%= link_to 'Back', entries_path %>

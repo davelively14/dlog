@@ -20,6 +20,7 @@ class EntriesController < ApplicationController
   # GET /entries/1
   # GET /entries/1.json
   def show
+    @recent = Entry.page
   end
 
   # GET /entries/new

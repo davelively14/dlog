@@ -1,7 +1,7 @@
 <div class="row">
   <div class="small-4 columns">
     <div class="panel">
-      <h5 class="text-center subheader">Recent Posts</h5>
+      <h5 class="text-center">Recent Posts</h5>
       <% @recent.each do |entry| %>
         <p>
           <strong><%= link_to entry.title.truncate(30), '#' %></strong><br>
@@ -16,9 +16,9 @@
   </div>
   <div class="small-8 columns">
     <% @entries.each do |entry| %>
-      <h3 class="subheader"><%= entry.title %></h3>
+      <h3><%= link_to entry.title, entry_path(entry) %></h3>
       <p><%= entry.body.html_safe %></p>
-      <p class="right subheader">
+      <p class="right">
         by
         <% if entry.user.username.length > 0 %>
           <%= entry.user.username %>
