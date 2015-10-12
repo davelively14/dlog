@@ -12,6 +12,7 @@ class EntriesController < ApplicationController
     end
 
     @all_entries = Entry.all
+    @max_pages = @all_entries.max_pages
     @recent = @all_entries.page
     @entries = @all_entries.page(@page)
   end
