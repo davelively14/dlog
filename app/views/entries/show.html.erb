@@ -4,10 +4,12 @@
       <h5 class="text-center">Recent Posts</h5>
       <% @recent.each do |entry| %>
         <p>
-          <strong><%= link_to entry.title.truncate(30), '#' %></strong><br>
+          <strong><%= link_to entry.title.truncate(30), entry_path(entry) %></strong><br>
           <%= entry.created_at.strftime("%m/%d/%y") %>
         </p>
       <% end %>
+      <hr>
+      <%= link_to 'Home', root_path, class: 'button tiny expand info round' %>
     </div>
   </div>
   <div class="small-8 columns">
