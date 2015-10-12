@@ -9,6 +9,11 @@ class EntriesController < ApplicationController
     @recent = @all_entries.page
 
     if page_params[:page]
+
+      if page_params[:page].to_i > @max_pages.to_i or page_params[:page].to_i < 1
+        redirect_to root_url, notice: 'Page does not exist. Only 1 through ' + @max_pages.to_s + ' pages exist.'
+      end
+
       @entries = @all_entries.page(page_params[:page].to_i)
       @current_page = page_params[:page]
     else
