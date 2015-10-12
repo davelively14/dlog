@@ -4,8 +4,16 @@ class EntriesController < ApplicationController
   # GET /entries
   # GET /entries.json
   def index
-    @recent = Entry.page(1)
-    @entries = Entry.page
+    if session[:page]
+      @page = session[:page]
+    else
+      @page = 1
+      session[:page] = @page
+    end
+
+    @all_entries = Entry.all
+    @recent = @all_entries.page
+    @entries = @all_entries.page(@page)
   end
 
   # GET /entries/1

@@ -2,7 +2,7 @@
   <div class="small-4 columns">
     <div class="panel">
       <h5 class="text-center subheader">Recent Posts</h5>
-      <% @entries.each do |entry| %>
+      <% @recent.each do |entry| %>
         <p>
           <strong><%= link_to entry.title.truncate(30), '#' %></strong><br>
           <%= entry.created_at.strftime("%m/%d/%y") %>
