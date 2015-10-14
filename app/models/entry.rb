@@ -10,7 +10,7 @@ class Entry < ActiveRecord::Base
 
   def self.page(num_page = 1)
     num_offset = (num_page - 1) * @entries_per_page
-    self.limit(5).offset(num_offset).reverse_order
+    self.limit(@entries_per_page).offset(num_offset).reverse_order
   end
 
   def self.max_pages
