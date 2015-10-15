@@ -1,0 +1,10 @@
+<h5 class="text-center">Page Nav</h5>
+<% if @current_page.to_i < @max_pages.to_i %>
+  <%= link_to 'Next', entries_path(page: @current_page.to_i + 1), class: 'right show-for-medium-up' %>
+  <%= link_to '>', entries_path(page: @current_page.to_i + 1), class: 'right hide-for-medium-up' %>
+<% end %>
+<% if @current_page.to_i > 1 %>
+  <%= link_to 'Previous', entries_path(page: @current_page.to_i - 1), class: 'left show-for-medium-up' %>
+  <%= link_to '<', entries_path(page: @current_page.to_i - 1), class: 'left hide-for-medium-up' %>
+<% end %>
+<br>
