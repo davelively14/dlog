@@ -1,22 +1,28 @@
-<nav class="top-bar" data-topbar role="navigation">
-  <ul class="title-area">
-    <li class="name">
-      <h1><%= link_to raw("<strong>lively</strong>Blog"), root_path %></h1>
-    </li>
-    <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-  </ul>
+<header>
+  <h1 class="text-center add-padding" style="color: white"><strong>lively</strong>Blog</h1>
 
-  <section class="top-bar-section">
-    <!-- Right Nav Section -->
-    <ul class="right">
-      <% if current_user %>
-        <li><%= link_to 'Edit profile', edit_user_registration_path %></li>
-        <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
-      <% else %>
-        <li><%= link_to 'Sign in', new_user_session_path %></li>
-        <li><%= link_to 'Register', new_user_registration_path %></li>
-      <% end %>
-    </ul>
-  </section>
-</nav>
+  <div class="sticky">
+    <nav class="top-bar" data-topbar role="navigation" data-options="sticky_on: [medium,large]">
+      <ul class="title-area">
+        <li class="name">
+          <h1><%= link_to raw("<strong>lively</strong>Blog"), root_path %></h1>
+        </li>
+        <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+      </ul>
+
+      <section class="top-bar-section">
+        <!-- Right Nav Section -->
+        <ul class="right">
+          <% if current_user %>
+            <li><%= link_to 'Edit profile', edit_user_registration_path %></li>
+            <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to 'Sign in', new_user_session_path %></li>
+            <li><%= link_to 'Register', new_user_registration_path %></li>
+          <% end %>
+        </ul>
+      </section>
+    </nav>
+  </div>
+</header>
